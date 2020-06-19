@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Egor Radaev](https://up.htmlacademy.ru/react/4/user/1342395).
-* Наставник: `Неизвестно`.
+* Наставник: [Анатолий Новоселов](https://htmlacademy.ru/profile/id1474615).
 
 ---
 
