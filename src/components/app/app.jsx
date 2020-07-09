@@ -9,11 +9,12 @@ const App = (props) => {
   />;
 };
 
-
 App.propTypes = {
-  titles: PropTypes.arrayOf(
-      PropTypes.string.isRequired
-  ).isRequired,
+  rentTitles: PropTypes.shape({
+    titles: PropTypes.arrayOf(
+        PropTypes.string.isRequired
+    ).isRequired,
+  })
 };
 
 export default App;

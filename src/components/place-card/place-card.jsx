@@ -2,11 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
-  console.log(props);
-  // eslint-disable-next-line react/prop-types
   const card = props;
-  // const key = props;
-  console.log(card);
   return <article className="cities__place-card place-card">
     <div className="place-card__mark">
       <span>Premium</span>
@@ -41,6 +37,14 @@ const PlaceCard = (props) => {
       <p className="place-card__type">Apartment</p>
     </div>
   </article>;
+};
+
+PlaceCard.propTypes = {
+  card: PropTypes.shape({
+    title: PropTypes.arrayOf(
+        PropTypes.string.isRequired
+    ).isRequired,
+  })
 };
 
 export default PlaceCard;
