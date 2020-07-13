@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 import MainScreen from "../main-screen/main-screen.jsx";
 
 const App = (props) => {
-  const rentTitles = props;
+  const {titles} = props;
   return <MainScreen
-    titles = {rentTitles}
+    titles = {titles}
   />;
 };
 
 App.propTypes = {
-  rentTitles: PropTypes.shape({
-    titles: PropTypes.arrayOf(
-        PropTypes.string.isRequired
-    ).isRequired,
-  })
+  titles: PropTypes.arrayOf(
+      PropTypes.string.isRequired
+  ).isRequired,
 };
 
 export default App;

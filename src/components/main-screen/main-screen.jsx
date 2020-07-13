@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import PlaceCard from "../place-card/place-card.jsx";
 
 const MainScreen = (props) => {
-  const offerTitles = props;
-  const cards = offerTitles.titles.titles.map((item, i) => {
+  const {titles} = props;
+  const cards = titles.map((item, i) => {
     return <PlaceCard
       title = {item}
       key = {i}
@@ -106,13 +106,9 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  offerTitles: PropTypes.shape({
-    titles: PropTypes.shape({
-      titles: PropTypes.arrayOf(
-          PropTypes.string.isRequired
-      ).isRequired,
-    })
-  })
+  titles: PropTypes.arrayOf(
+      PropTypes.string.isRequired
+  ).isRequired,
 };
 
 export default MainScreen;
