@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
-  const card = props;
+  const {title} = props;
   return <article className="cities__place-card place-card">
     <div className="place-card__mark">
       <span>Premium</span>
@@ -32,7 +32,7 @@ const PlaceCard = (props) => {
         </div>
       </div>
       <h2 className="place-card__name">
-        <a href="#">{card.title}</a>
+        <a href="#">{title}</a>
       </h2>
       <p className="place-card__type">Apartment</p>
     </div>
@@ -40,11 +40,7 @@ const PlaceCard = (props) => {
 };
 
 PlaceCard.propTypes = {
-  card: PropTypes.shape({
-    title: PropTypes.arrayOf(
-        PropTypes.string.isRequired
-    ).isRequired,
-  })
+  title: PropTypes.string.isRequired,
 };
 
 export default PlaceCard;
