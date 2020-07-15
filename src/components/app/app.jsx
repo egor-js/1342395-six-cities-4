@@ -1,12 +1,18 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import MainScreen from "../main-screen/main-screen.jsx";
 
 const App = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const {rentCount} = props;
+  const {titles} = props;
   return <MainScreen
-    count = {rentCount}
+    titles = {titles}
   />;
+};
+
+App.propTypes = {
+  titles: PropTypes.arrayOf(
+      PropTypes.string.isRequired
+  ).isRequired,
 };
 
 export default App;
