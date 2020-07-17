@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
-  const {title} = props;
+  const {title, onAticleClick, id} = props;
   return <article className="cities__place-card place-card">
     <div className="place-card__mark">
       <span>Premium</span>
     </div>
-    <div className="cities__image-wrapper place-card__image-wrapper">
+    <div className="cities__image-wrapper pl1ace-card__image-wrapper">
       <a href="#">
         <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image"/>
       </a>
@@ -32,7 +32,7 @@ const PlaceCard = (props) => {
         </div>
       </div>
       <h2 className="place-card__name">
-        <a href="#">{title}</a>
+        <a href="#" id={id} onClick={onAticleClick}>{title}</a>
       </h2>
       <p className="place-card__type">Apartment</p>
     </div>
@@ -41,6 +41,8 @@ const PlaceCard = (props) => {
 
 PlaceCard.propTypes = {
   title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  onAticleClick: PropTypes.func.isRequired,
 };
 
 export default PlaceCard;
