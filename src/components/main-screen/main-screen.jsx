@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import PlaceCard from "../place-card/place-card.jsx";
 
 const MainScreen = (props) => {
-  const {titles} = props;
+  const {titles, onAticleClick} = props;
   const cards = titles.map((item, i) => {
     return <PlaceCard
       title = {item}
-      key = {i}
+      key = {i + item[0]}
+      onAticleClick = {onAticleClick}
+      id = {i}
     />;
   });
   return <div className="page page--gray page--main">
@@ -109,6 +111,7 @@ MainScreen.propTypes = {
   titles: PropTypes.arrayOf(
       PropTypes.string.isRequired
   ).isRequired,
+  onAticleClick: PropTypes.func.isRequired,
 };
 
 export default MainScreen;
