@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import PlaceCard from "../place-card/place-card.jsx";
 
 const MainScreen = (props) => {
-  const {titles, onAticleClick} = props;
-  const cards = titles.map((item, i) => {
+  const {titles, places, onAticleClick} = props;
+  const cards = places.map((item, i) => {
     return <PlaceCard
-      title = {item}
-      key = {i + item[0]}
+      title = {item.title}
+      place = {item}
+      key = {i + item.title[0]}
       onAticleClick = {onAticleClick}
       id = {i}
     />;
@@ -110,6 +111,16 @@ const MainScreen = (props) => {
 MainScreen.propTypes = {
   titles: PropTypes.arrayOf(
       PropTypes.string.isRequired
+  ).isRequired,
+  places: PropTypes.arrayOf(
+      PropTypes.shape({
+        photoUrl: PropTypes.string.isRequired,
+        isPremium: PropTypes.bool.isRequired,
+        price: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        raiting: PropTypes.number.isRequired,
+      }).isRequired
   ).isRequired,
   onAticleClick: PropTypes.func.isRequired,
 };
