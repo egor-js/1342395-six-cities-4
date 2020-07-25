@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import MainScreen from "../main-screen/main-screen.jsx";
+import PlacesList from "../places-list/places-list.jsx";
 
 const App = (props) => {
   const {titles, places, onAticleClick} = props;
-  return <MainScreen
+  return <PlacesList
     titles = {titles}
     onAticleClick = {onAticleClick}
     places = {places}
