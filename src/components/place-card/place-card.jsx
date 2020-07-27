@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 class PlaceCard extends PureComponent {
   constructor(props) {
     super(props);
-    const {place, onAticleClick, id} = props;
+    const {place, onAticleClick, id, onCardHover} = props;
     this.place = place;
     this.onAticleClick = onAticleClick;
+    this.onCardHover = onCardHover;
     this.id = id;
     const {photoUrl, isPremium, price, title, type, raiting} = this.place;
     this.photoUrl = photoUrl;
@@ -20,7 +21,10 @@ class PlaceCard extends PureComponent {
   }
 
   render() {
-    return <article className="cities__place-card place-card">
+    return <article onMouseOver={() => {
+      this.onCardHover(this.id);
+    }}
+    className="cities__place-card place-card">
       {this.isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>
@@ -59,8 +63,9 @@ class PlaceCard extends PureComponent {
 }
 
 PlaceCard.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   onAticleClick: PropTypes.func.isRequired,
+  onCardHover: PropTypes.func.isRequired,
   place: PropTypes.shape({
     photoUrl: PropTypes.string.isRequired,
     isPremium: PropTypes.bool.isRequired,

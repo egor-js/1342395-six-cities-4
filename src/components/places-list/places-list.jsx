@@ -8,17 +8,31 @@ class PlacesList extends PureComponent {
     const {places, onAticleClick} = props;
     this.places = places;
     this.onAticleClick = onAticleClick;
+    this._hoverCardHandler = this._hoverCardHandler.bind(this);
+    this.state = {
+      activeCardId: `XX`,
+    };
   }
+
+  _hoverCardHandler(id) {
+    console.log(this.state);
+    this.setState({activeCardId: id});
+    console.log(this.state);
+  }
+
   getCards() {
     this.cards = this.places.map((item, i) => {
       return <PlaceCard
         place = {item}
         key = {i + item.title[0]}
-        id = {i}
+        id = {i + item.title[0]}
+        onCardHover = {this._hoverCardHandler}
         onAticleClick = {this.onAticleClick}
       />;
     });
-    console.log(this.cards);
+    // console.log(this.cards[0]);
+    // console.log(this.props);
+    // console.log(this.state);
     return this.cards;
   }
   render() {
