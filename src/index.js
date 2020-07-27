@@ -10,7 +10,6 @@ const place = {
 
 ReactDOM.render(
     <App
-      titles = {place.offersTitles}
       onAticleClick = {place.onAticleClick}
       places = {places}
     />,

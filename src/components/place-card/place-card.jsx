@@ -23,8 +23,7 @@ class PlaceCard extends PureComponent {
   render() {
     return <article onMouseOver={() => {
       this.onCardHover(this.id);
-    }}
-    className="cities__place-card place-card">
+    }} className="cities__place-card place-card">
       {this.isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>

@@ -1,20 +1,16 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import PlacesList from "../places-list/places-list.jsx";
+import MainScreen from "../main-screen/main-screen.jsx";
 
 const App = (props) => {
-  const {titles, places, onAticleClick} = props;
-  return <PlacesList
-    titles = {titles}
+  const {places, onAticleClick} = props;
+  return <MainScreen
     onAticleClick = {onAticleClick}
     places = {places}
   />;
 };
 
 App.propTypes = {
-  titles: PropTypes.arrayOf(
-      PropTypes.string.isRequired
-  ).isRequired,
   places: PropTypes.arrayOf(
       PropTypes.shape({
         photoUrl: PropTypes.string.isRequired,
