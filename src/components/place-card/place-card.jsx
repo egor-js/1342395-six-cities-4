@@ -24,10 +24,10 @@ class PlaceCard extends PureComponent {
     return <article onMouseOver={() => {
       this.onCardHover(this.id);
     }} className="cities__place-card place-card">
-      {this.isPremium ?
+      {this.isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>
-        </div> : ``}
+        </div>}
       <div className="cities__image-wrapper pl1ace-card__image-wrapper">
         <a href="#">
           <img className="place-card__image" src={this.photoUrl} width="260" height="200" alt="Place image"/>
