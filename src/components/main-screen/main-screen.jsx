@@ -1,17 +1,21 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import PlaceCard from "../place-card/place-card.jsx";
+import PlacesList from "../places-list/places-list.jsx";
 
 const MainScreen = (props) => {
-  const {titles, onAticleClick} = props;
-  const cards = titles.map((item, i) => {
-    return <PlaceCard
-      title = {item}
-      key = {i + item[0]}
-      onAticleClick = {onAticleClick}
-      id = {i}
-    />;
-  });
+  const {places, onAticleClick} = props;
+  const placesList = <PlacesList
+    places = {places}
+    onAticleClick = {onAticleClick}
+  />;
+  // const placesList = places.map((item, i) => {
+  //   return <PlacesList
+  //     place = {item}
+  //     key = {i + item.title[0]}
+  //     onAticleClick = {onAticleClick}
+  //     id = {i}
+  //   />;
+  // });
   return <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -95,7 +99,7 @@ const MainScreen = (props) => {
               </select>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {cards}
+              {placesList}
             </div>
           </section>
           <div className="cities__right-section">
@@ -108,8 +112,15 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  titles: PropTypes.arrayOf(
-      PropTypes.string.isRequired
+  places: PropTypes.arrayOf(
+      PropTypes.shape({
+        photoUrl: PropTypes.string.isRequired,
+        isPremium: PropTypes.bool.isRequired,
+        price: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        raiting: PropTypes.number.isRequired,
+      }).isRequired
   ).isRequired,
   onAticleClick: PropTypes.func.isRequired,
 };

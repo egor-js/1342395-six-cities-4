@@ -2,19 +2,53 @@ import React from "react";
 import renderer from "react-test-renderer";
 import PlaceCard from "./place-card";
 
-const titles = [`Beautiful & luxurious apartment at great location`, `Wood and stone place`, `Canal View Prinsengracht`, `Nice, cozy, warm big bed apartment`, `Wood and stone place`];
 const onAticleClick = function () {};
-const id = 0;
+const onCardHover = function () {};
+const mocks = [
+  {
+    photoUrl: `img/apartment-01.jpg`,
+    isPremium: false,
+    price: 50,
+    title: `Beautiful & luxurious apartment at great location`,
+    type: `Apartment`,
+    raiting: 5,
+  },
+  {
+    photoUrl: `img/apartment-02.jpg`,
+    isPremium: true,
+    price: 85,
+    title: `Wood and stone place`,
+    type: `Room`,
+    raiting: 4,
+  },
+  {
+    photoUrl: `img/apartment-03.jpg`,
+    isPremium: false,
+    price: 42,
+    title: `Canal View Prinsengracht`,
+    type: `House`,
+    raiting: 3,
+  },
+  {
+    photoUrl: `img/apartment-01.jpg`,
+    isPremium: false,
+    price: 22,
+    title: `Nice, cozy, warm big bed apartment`,
+    type: `Hotel`,
+    raiting: 2,
+  },
+];
 
-describe(`main-screen`, () => {
-  it(`snapshot test main screen`, () => {
+describe(`place card`, () => {
+  it(`snapshot test place card`, () => {
     const tree = renderer
       .create(
           <PlaceCard
-            title = {titles[0]}
-            key = {0 + titles[0][0]}
+            place = {mocks[0]}
+            key = {0 + mocks[0].title[0]}
             onAticleClick = {onAticleClick}
-            id = {id}
+            onCardHover = {onCardHover}
+            id = {0 + mocks[0].title[0]}
           />)
       .toJSON();
     expect(tree).toMatchSnapshot();
