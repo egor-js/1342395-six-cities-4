@@ -5,9 +5,6 @@ import PlaceCard from "../place-card/place-card.jsx";
 class PlacesList extends PureComponent {
   constructor(props) {
     super(props);
-    const {places, onAticleClick} = props;
-    this.places = places;
-    this.onAticleClick = onAticleClick;
     this._hoverCardHandler = this._hoverCardHandler.bind(this);
     this.state = {
       activeCardId: `XX`,
@@ -18,21 +15,17 @@ class PlacesList extends PureComponent {
     this.setState({activeCardId: id});
   }
 
-  getCards() {
-    this.cards = this.places.map((item, i) => {
+  render() {
+    const {places, onAticleClick} = this.props;
+    return places.map((item, i) => {
       return <PlaceCard
         place = {item}
         key = {i + item.title[0]}
         id = {i + item.title[0]}
         onCardHover = {this._hoverCardHandler}
-        onAticleClick = {this.onAticleClick}
+        onAticleClick = {onAticleClick}
       />;
     });
-    return this.cards;
-  }
-
-  render() {
-    return this.getCards();
   }
 }
 
