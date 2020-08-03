@@ -43,6 +43,11 @@ export default [
       `kitchen`,
       `fridge`,
     ],
+    host: {
+      name: `Angelina`,
+      avatarurl: `img/avatar-angelina.jpg`,
+      super: false,
+    },
   },
   {
     photoUrl: `img/apartment-03.jpg`,
@@ -68,6 +73,11 @@ export default [
       `cabeltv`,
       `fridge`,
     ],
+    host: {
+      name: `Angelina`,
+      avatarurl: `img/avatar-angelina.jpg`,
+      super: true,
+    },
   },
   {
     photoUrl: `img/apartment-01.jpg`,
@@ -88,5 +98,10 @@ export default [
       `cabeltv`,
       `fridge`,
     ],
+    host: {
+      name: `Angelina`,
+      avatarurl: `img/avatar-angelina.jpg`,
+      super: false,
+    },
   },
 ];
