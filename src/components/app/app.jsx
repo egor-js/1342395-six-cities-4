@@ -4,7 +4,6 @@ import MainScreen from "../main-screen/main-screen.jsx";
 import PlaceDetail from "../place-detail/place-detail.jsx";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 
-
 class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -35,12 +34,11 @@ class App extends PureComponent {
 
   _renderMainScreen() {
     const {detailId} = this.state;
-    const {places, onAticleClick} = this.props;
+    const {places} = this.props;
     if (detailId !== `XX`) {
       return (
-        <MainScreen
-          places = {places}
-          onAticleClick= {onAticleClick}
+        <PlaceDetail
+          place = {places[detailId[0]]}
         />
       );
     }
@@ -53,7 +51,6 @@ class App extends PureComponent {
   }
 
   _clickTitleHandler(id) {
-    console.log(`clicked on` + id);
     this.setState({detailId: id});
   }
 }
