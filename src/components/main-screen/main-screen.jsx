@@ -8,14 +8,6 @@ const MainScreen = (props) => {
     places = {places}
     onAticleClick = {onAticleClick}
   />;
-  // const placesList = places.map((item, i) => {
-  //   return <PlacesList
-  //     place = {item}
-  //     key = {i + item.title[0]}
-  //     onAticleClick = {onAticleClick}
-  //     id = {i}
-  //   />;
-  // });
   return <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
