@@ -16,7 +16,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {places, onAticleClick} = this.props;
+    const {places} = this.props;
     return (
       <BrowserRouter>
         <Switch>
