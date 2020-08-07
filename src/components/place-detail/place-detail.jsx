@@ -313,7 +313,8 @@ PlaceDetail.propTypes = {
       name: PropTypes.string.isRequired,
       avatarurl: PropTypes.string.isRequired,
       super: PropTypes.bool.isRequired,
-    })
+    }),
+    city: PropTypes.string.isRequired,
   }).isRequired,
 };
 

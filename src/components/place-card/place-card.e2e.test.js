@@ -2,42 +2,7 @@ import React from "react";
 import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import PlaceCard from "./place-card";
-
-
-const mocks = [
-  {
-    photoUrl: `img/apartment-01.jpg`,
-    isPremium: false,
-    price: 50,
-    title: `Beautiful & luxurious apartment at great location`,
-    type: `Apartment`,
-    raiting: 5,
-  },
-  {
-    photoUrl: `img/apartment-02.jpg`,
-    isPremium: true,
-    price: 85,
-    title: `Wood and stone place`,
-    type: `Room`,
-    raiting: 4,
-  },
-  {
-    photoUrl: `img/apartment-03.jpg`,
-    isPremium: false,
-    price: 42,
-    title: `Canal View Prinsengracht`,
-    type: `House`,
-    raiting: 3,
-  },
-  {
-    photoUrl: `img/apartment-01.jpg`,
-    isPremium: false,
-    price: 22,
-    title: `Nice, cozy, warm big bed apartment`,
-    type: `Hotel`,
-    raiting: 2,
-  },
-];
+import testData from "../../mocks/test-data.js";
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -49,11 +14,11 @@ describe(`e2e place-card`, () => {
     const onCardHover = function () {};
     const mainScreen = mount(
         <PlaceCard
-          place = {mocks[0]}
-          key = {0 + mocks[0].title[0]}
+          place = {testData[0]}
+          key = {0 + testData[0].title[0]}
           onAticleClick = {onAticleClick}
           onCardHover = {onCardHover}
-          id = {0 + mocks[0].title[0]}
+          id = {0 + testData[0].title[0]}
         />
     );
     const article = mainScreen.find(`.place-card__name`).find(`a`).at(0);//  .find(`[id=${0}]`); .at(0)
@@ -66,11 +31,11 @@ describe(`e2e place-card`, () => {
     const onAticleClick = function () {};
     const mainScreen = mount(
         <PlaceCard
-          place = {mocks[0]}
-          key = {0 + mocks[0].title[0]}
+          place = {testData[0]}
+          key = {0 + testData[0].title[0]}
           onAticleClick = {onAticleClick}
           onCardHover = {onCardHover}
-          id = {0 + mocks[0].title[0]}
+          id = {0 + testData[0].title[0]}
         />
     );
     const article = mainScreen.find(`.cities__place-card.place-card`);

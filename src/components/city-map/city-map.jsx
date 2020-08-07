@@ -13,19 +13,20 @@ export default class CityMap extends PureComponent {
     );
   }
   componentDidMount() {
-    const {coordinates} = this.props;
+    const {places} = this.props;
     const zoom = 12;
+    const mapCentre = Cities[places[0].city];
     const icon = leaflet.icon({
       iconUrl: `img/pin.svg`,
       iconSize: [30, 30]
     });
     const map = leaflet.map(`map`, {
-      center: Cities.Amsterdam,
+      center: mapCentre,
       zoom,
       zoomControl: false,
       marker: true
     });
-    map.setView(Cities.Amsterdam, zoom);
+    map.setView(mapCentre, zoom);
 
     leaflet
     .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -33,15 +34,35 @@ export default class CityMap extends PureComponent {
     })
     .addTo(map);
 
-    coordinates.forEach((item) => {
+    places.forEach((item) => {
       leaflet
-      .marker(item, {icon})
+      .marker(item.coordinates, {icon})
       .addTo(map);
     });
   }
 }
 
 CityMap.propTypes = {
-  city: PropTypes.string.isRequired,
-  coordinates: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number.isRequired)),
+  places: PropTypes.arrayOf(
+      PropTypes.shape({
+        photoUrl: PropTypes.string.isRequired,
+        photos: PropTypes.arrayOf(PropTypes.string.isRequired),
+        isPremium: PropTypes.bool.isRequired,
+        price: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        raiting: PropTypes.number.isRequired,
+        bedrooms: PropTypes.number.isRequired,
+        guests: PropTypes.number.isRequired,
+        features: PropTypes.arrayOf(PropTypes.string.isRequired),
+        host: PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          avatarurl: PropTypes.string.isRequired,
+          super: PropTypes.bool.isRequired,
+        }),
+        city: PropTypes.string.isRequired,
+      }).isRequired
+  ).isRequired,
 };

@@ -9,14 +9,8 @@ const MainScreen = (props) => {
     places = {places}
     onAticleClick = {onAticleClick}
   />;
-  const city = places[0].city;
-  const coordinates = places.map((item) => {
-    return item.coordinates;
-  }
-  );
   const placesMap = <CityMap
-    city = {city}
-    coordinates = {coordinates}
+    places = {places}
   />;
   return <div className="page page--gray page--main">
     <header className="header">

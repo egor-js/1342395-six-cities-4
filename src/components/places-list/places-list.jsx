@@ -11,10 +11,6 @@ class PlacesList extends PureComponent {
     };
   }
 
-  _hoverCardHandler(id) {
-    this.setState({activeCardId: id});
-  }
-
   render() {
     const {places, onAticleClick} = this.props;
     return places.map((item, i) => {
@@ -26,6 +22,9 @@ class PlacesList extends PureComponent {
         onAticleClick = {onAticleClick}
       />;
     });
+  }
+  _hoverCardHandler(id) {
+    this.setState({activeCardId: id});
   }
 }
 
