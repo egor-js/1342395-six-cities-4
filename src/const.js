@@ -10,3 +10,7 @@ export const PlaceFeatures = {
   cabeltv: `Cabel TV`,
   fridge: `Fridge`,
 };
+
+export const Cities = {
+  Amsterdam: [52.38333, 4.9]
+};

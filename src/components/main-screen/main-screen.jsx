@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import PlacesList from "../places-list/places-list.jsx";
+import CityMap from "../city-map/city-map.jsx";
 
 const MainScreen = (props) => {
   const {places, onAticleClick} = props;
@@ -95,7 +96,10 @@ const MainScreen = (props) => {
             </div>
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+            <CityMap
+              city = {places[0].city}
+              coordinates = {places[0].coordinates}
+            />
           </div>
         </div>
       </div>
@@ -103,6 +107,9 @@ const MainScreen = (props) => {
   </div>;
 };
 
+// <CityMap
+// place = {places[0]}
+// />
 MainScreen.propTypes = {
   places: PropTypes.arrayOf(
       PropTypes.shape({

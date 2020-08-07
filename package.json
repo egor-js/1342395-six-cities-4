@@ -21,6 +21,7 @@
     "eslint": "5.13.0",
     "eslint-config-htmlacademy": "0.5.2",
     "eslint-plugin-react": "7.20.0",
+    "eslint-plugin-sort-class-members": "1.7.0",
     "jest": "26.1.0",
     "react-test-renderer": "16.13.1",
     "webpack": "4.43.0",
@@ -31,6 +32,7 @@
     "node": "10"
   },
   "dependencies": {
+    "leaflet": "1.6.0",
     "prop-types": "15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",

@@ -24,6 +24,8 @@ export default [
       avatarurl: `img/avatar-angelina.jpg`,
       super: true,
     },
+    city: `Amsterdam`,
+    coordinates: [52.3909553943508, 4.85309666406198],
   },
   {
     photoUrl: `img/apartment-02.jpg`,
@@ -48,6 +50,8 @@ export default [
       avatarurl: `img/avatar-angelina.jpg`,
       super: false,
     },
+    city: `Amsterdam`,
+    coordinates: [52.369553943508, 4.85309666406198],
   },
   {
     photoUrl: `img/apartment-03.jpg`,
@@ -78,6 +82,8 @@ export default [
       avatarurl: `img/avatar-angelina.jpg`,
       super: true,
     },
+    city: `Amsterdam`,
+    coordinates: [52.3909553943508, 4.929309666406198],
   },
   {
     photoUrl: `img/apartment-01.jpg`,
@@ -103,5 +109,7 @@ export default [
       avatarurl: `img/avatar-angelina.jpg`,
       super: false,
     },
+    city: `Amsterdam`,
+    coordinates: [52.3809553943508, 4.939309666406198],
   },
 ];
