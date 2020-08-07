@@ -4,13 +4,13 @@ import leaflet from "leaflet";
 import {Cities} from '../../const.js';
 
 export default class CityMap extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <section id="map" className="cities__map map" />
     );
-  }
-  constructor(props) {
-    super(props);
   }
   componentDidMount() {
     const {coordinates} = this.props;
@@ -33,17 +33,15 @@ export default class CityMap extends PureComponent {
     })
     .addTo(map);
 
-    leaflet
-    .marker([52.369553943508, 4.85309666406198], {icon})
-    .addTo(map);
-
-    leaflet
-    .marker(coordinates, {icon})
-    .addTo(map);
+    coordinates.forEach((item) => {
+      leaflet
+      .marker(item, {icon})
+      .addTo(map);
+    });
   }
 }
 
 CityMap.propTypes = {
   city: PropTypes.string.isRequired,
-  coordinates: PropTypes.arrayOf(PropTypes.number.isRequired),
+  coordinates: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number.isRequired)),
 };

@@ -9,6 +9,15 @@ const MainScreen = (props) => {
     places = {places}
     onAticleClick = {onAticleClick}
   />;
+  const city = places[0].city;
+  const coordinates = places.map((item) => {
+    return item.coordinates;
+  }
+  );
+  const placesMap = <CityMap
+    city = {city}
+    coordinates = {coordinates}
+  />;
   return <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -96,10 +105,7 @@ const MainScreen = (props) => {
             </div>
           </section>
           <div className="cities__right-section">
-            <CityMap
-              city = {places[0].city}
-              coordinates = {places[0].coordinates}
-            />
+            {placesMap}
           </div>
         </div>
       </div>
@@ -119,6 +125,8 @@ MainScreen.propTypes = {
         title: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
         raiting: PropTypes.number.isRequired,
+        city: PropTypes.string.isRequired,
+        coordinates: PropTypes.arrayOf(PropTypes.number.isRequired),
       }).isRequired
   ).isRequired,
   onAticleClick: PropTypes.func.isRequired,
