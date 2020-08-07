@@ -53,7 +53,10 @@ class PlaceCard extends PureComponent {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#" id={this.id} onClick={this.onAticleClick}>{this.title}</a>
+          <a href="#" id={this.id} onClick={() => {
+            this.onAticleClick(this.id);
+          }}>
+            {this.title}</a>
         </h2>
         <p className="place-card__type">{this.type}</p>
       </div>

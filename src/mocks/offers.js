@@ -1,45 +1,107 @@
 export default [
   {
     photoUrl: `img/apartment-01.jpg`,
-    isPremium: false,
+    photos: [`img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/apartment-01.jpg`],
+    isPremium: true,
     price: 50,
     title: `Beautiful & luxurious apartment at great location`,
+    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    text: `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
     type: `Apartment`,
-    raiting: 5,
+    raiting: 4.8,
+    bedrooms: 2,
+    guests: 3,
+    features: [
+      `wifi`,
+      `washingmachine`,
+      `towels`,
+      `dishwasher`,
+      `cabeltv`,
+      `fridge`,
+    ],
+    host: {
+      name: `Angelina`,
+      avatarurl: `img/avatar-angelina.jpg`,
+      super: true,
+    },
   },
   {
     photoUrl: `img/apartment-02.jpg`,
+    photos: [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`],
     isPremium: true,
     price: 85,
     title: `Wood and stone place`,
+    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    text: `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
     type: `Room`,
-    raiting: 4,
+    raiting: 4.5,
+    bedrooms: 1,
+    guests: 1,
+    features: [
+      `wifi`,
+      `towels`,
+      `kitchen`,
+      `fridge`,
+    ],
+    host: {
+      name: `Angelina`,
+      avatarurl: `img/avatar-angelina.jpg`,
+      super: false,
+    },
   },
   {
     photoUrl: `img/apartment-03.jpg`,
+    photos: [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`],
     isPremium: false,
     price: 42,
     title: `Canal View Prinsengracht`,
+    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    text: `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
     type: `House`,
-    raiting: 3,
+    raiting: 3.8,
+    bedrooms: 4,
+    guests: 8,
+    features: [
+      `wifi`,
+      `washingmachine`,
+      `towels`,
+      `heating`,
+      `coffeemachine`,
+      `babyseat`,
+      `kitchen`,
+      `dishwasher`,
+      `cabeltv`,
+      `fridge`,
+    ],
+    host: {
+      name: `Angelina`,
+      avatarurl: `img/avatar-angelina.jpg`,
+      super: true,
+    },
   },
   {
     photoUrl: `img/apartment-01.jpg`,
+    photos: [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`],
     isPremium: false,
     price: 22,
     title: `Nice, cozy, warm big bed apartment`,
+    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    text: `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
     type: `Hotel`,
-    raiting: 2,
+    raiting: 2.9,
+    bedrooms: 2,
+    guests: 4,
+    features: [
+      `wifi`,
+      `towels`,
+      `coffeemachine`,
+      `cabeltv`,
+      `fridge`,
+    ],
+    host: {
+      name: `Angelina`,
+      avatarurl: `img/avatar-angelina.jpg`,
+      super: false,
+    },
   },
 ];
-
-/*
-Каждая карточка в списке предложений содержит информацию:
-
-    Изображение. Фотография жилья.
-    Премиальность. Метка «Premium».
-    Стоимость за ночь. Стоимость всегда отображается в евро.
-    Заголовок. Краткое описание предложения. Например: «Beautiful & luxurious apartment at great location».
-    Тип жилья. Одно из нескольких значений: apartment, room, house, hotel.
-    Рейтинг. Оценка выводится в виде закрашенных звезд. Максимальное количество звёзд — 5. Оценка пользователя округляется до ближайшего целого. Например, оценка 3.1 округляется до 3-х. Оценка 4.5 округляется до 5.
-*/
