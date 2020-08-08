@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import MainScreen from "../main-screen/main-screen.jsx";
 import PlaceDetail from "../place-detail/place-detail.jsx";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
+import reviews from '../../mocks/reviews.js';
 
 class App extends PureComponent {
   constructor(props) {
@@ -10,7 +11,7 @@ class App extends PureComponent {
     this._clickTitleHandler = this._clickTitleHandler.bind(this);
     this.props = props;
     this.state = {
-      detailId: `XX`,
+      detailedCardId: `XX`,
     };
   }
 
@@ -25,6 +26,7 @@ class App extends PureComponent {
           <Route exact path="/dev-component">
             <PlaceDetail
               place = {places[0]}
+              reviews = {reviews}
             />;
           </Route>
         </Switch>
@@ -33,12 +35,16 @@ class App extends PureComponent {
   }
 
   _renderMainScreen() {
-    const {detailId} = this.state;
+    const {detailedCardId} = this.state;
     const {places} = this.props;
-    if (detailId !== `XX`) {
+    if (detailedCardId !== `XX`) {
+      const reviewsByPlace = reviews.filter((item) => {
+        return item.placeid === detailedCardId;
+      });
       return (
         <PlaceDetail
-          place = {places[detailId[0]]}
+          place = {places[detailedCardId[0]]}
+          reviews = {reviewsByPlace}
         />
       );
     }
@@ -51,7 +57,7 @@ class App extends PureComponent {
   }
 
   _clickTitleHandler(id) {
-    this.setState({detailId: id});
+    this.setState({detailedCardId: id});
   }
 }
 

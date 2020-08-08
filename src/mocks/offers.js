@@ -1,5 +1,6 @@
 export default [
   {
+    id: `0B`,
     photoUrl: `img/apartment-01.jpg`,
     photos: [`img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/apartment-01.jpg`],
     isPremium: true,
@@ -28,6 +29,7 @@ export default [
     coordinates: [52.3909553943508, 4.85309666406198],
   },
   {
+    id: `1W`,
     photoUrl: `img/apartment-02.jpg`,
     photos: [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`],
     isPremium: true,
@@ -54,6 +56,7 @@ export default [
     coordinates: [52.369553943508, 4.85309666406198],
   },
   {
+    id: `2C`,
     photoUrl: `img/apartment-03.jpg`,
     photos: [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`],
     isPremium: false,
@@ -86,6 +89,7 @@ export default [
     coordinates: [52.3909553943508, 4.929309666406198],
   },
   {
+    id: `3N`,
     photoUrl: `img/apartment-01.jpg`,
     photos: [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`],
     isPremium: false,
