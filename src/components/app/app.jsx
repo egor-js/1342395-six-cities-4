@@ -9,7 +9,7 @@ class App extends PureComponent {
   constructor(props) {
     super(props);
     this._clickTitleHandler = this._clickTitleHandler.bind(this);
-    this.props = props;
+
     this.state = {
       detailedCardId: `XX`,
     };
