@@ -20,6 +20,7 @@ class PlacesList extends PureComponent {
         id = {i + item.title[0]}
         onCardHover = {this._hoverCardHandler}
         onAticleClick = {onAticleClick}
+        mode = {this.props.mode}
       />;
     });
   }
@@ -29,6 +30,7 @@ class PlacesList extends PureComponent {
 }
 
 PlacesList.propTypes = {
+  mode: PropTypes.string.isRequired,
   places: PropTypes.arrayOf(
       PropTypes.shape({
         photoUrl: PropTypes.string.isRequired,

@@ -11,6 +11,7 @@ const MainScreen = (props) => {
   />;
   const placesMap = <CityMap
     places = {places}
+    mode = {`main`}
   />;
   return <div className="page page--gray page--main">
     <header className="header">

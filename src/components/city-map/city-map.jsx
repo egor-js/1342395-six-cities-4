@@ -6,11 +6,23 @@ import {Cities} from '../../const.js';
 export default class CityMap extends PureComponent {
   constructor(props) {
     super(props);
+    console.log(props);
   }
   render() {
-    return (
-      <section id="map" className="cities__map map" />
-    );
+    switch (this.props.mode) {
+      case `main`:
+        console.log(`case main`);
+        return (
+          <section id="map" className="cities__map map" />
+        );
+      case `detail`:
+        console.log(`detail`);
+        return (
+          <section id="map" className="property__map map" />
+        );
+      default:
+        return null;
+    }
   }
   componentDidMount() {
     const {places} = this.props;
@@ -43,6 +55,7 @@ export default class CityMap extends PureComponent {
 }
 
 CityMap.propTypes = {
+  mode: PropTypes.string.isRequired,
   places: PropTypes.arrayOf(
       PropTypes.shape({
         photoUrl: PropTypes.string.isRequired,

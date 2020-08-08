@@ -41,10 +41,16 @@ class App extends PureComponent {
       const reviewsByPlace = reviews.filter((item) => {
         return item.placeid === detailedCardId;
       });
+      const otherPlaces = places.filter((item) => {
+        return item.id !== detailedCardId;
+      });
       return (
         <PlaceDetail
           place = {places[detailedCardId[0]]}
+          otherPlaces = {otherPlaces}
           reviews = {reviewsByPlace}
+          mode = {`detail`}
+          onAticleClick= {this._clickTitleHandler}
         />
       );
     }
