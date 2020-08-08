@@ -2,7 +2,7 @@ import React from "react";
 import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import MainScreen from "./main-screen";
-import testData from "../../mocks/test-data.js";
+import {testData} from "../../mocks/test-data.js";
 
 Enzyme.configure({
   adapter: new Adapter(),

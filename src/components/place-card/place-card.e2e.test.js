@@ -2,7 +2,7 @@ import React from "react";
 import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import PlaceCard from "./place-card";
-import testData from "../../mocks/test-data.js";
+import {testData} from "../../mocks/test-data.js";
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -19,9 +19,10 @@ describe(`e2e place-card`, () => {
           onAticleClick = {onAticleClick}
           onCardHover = {onCardHover}
           id = {0 + testData[0].title[0]}
+          mode = {`main`}
         />
     );
-    const article = mainScreen.find(`.place-card__name`).find(`a`).at(0);//  .find(`[id=${0}]`); .at(0)
+    const article = mainScreen.find(`.place-card__name`).find(`a`).at(0);
     article.simulate(`click`, {preventDefault() {}});
 
     expect(onAticleClick.mock.calls.length).toBe(1);
@@ -36,6 +37,7 @@ describe(`e2e place-card`, () => {
           onAticleClick = {onAticleClick}
           onCardHover = {onCardHover}
           id = {0 + testData[0].title[0]}
+          mode = {`main`}zzZ
         />
     );
     const article = mainScreen.find(`.cities__place-card.place-card`);

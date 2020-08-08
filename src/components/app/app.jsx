@@ -27,6 +27,8 @@ class App extends PureComponent {
             <PlaceDetail
               place = {places[0]}
               reviews = {reviews}
+              otherPlaces = {places}
+              onAticleClick= {this._clickTitleHandler}
             />;
           </Route>
         </Switch>
@@ -49,7 +51,6 @@ class App extends PureComponent {
           place = {places[detailedCardId[0]]}
           otherPlaces = {otherPlaces}
           reviews = {reviewsByPlace}
-          mode = {`detail`}
           onAticleClick= {this._clickTitleHandler}
         />
       );

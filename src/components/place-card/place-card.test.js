@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import PlaceCard from "./place-card";
-import testData from "../../mocks/test-data.js";
+import {testData} from "../../mocks/test-data.js";
 
 const onAticleClick = function () {};
 const onCardHover = function () {};
@@ -16,6 +16,7 @@ describe(`place card`, () => {
             onAticleClick = {onAticleClick}
             onCardHover = {onCardHover}
             id = {0 + testData[0].title[0]}
+            mode = {`main`}
           />)
       .toJSON();
     expect(tree).toMatchSnapshot();

@@ -8,6 +8,7 @@ const MainScreen = (props) => {
   const placesList = <PlacesList
     places = {places}
     onAticleClick = {onAticleClick}
+    mode = {`main`}
   />;
   const placesMap = <CityMap
     places = {places}
