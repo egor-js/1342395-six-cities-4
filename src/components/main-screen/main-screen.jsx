@@ -5,13 +5,6 @@ import CityMap from "../city-map/city-map.jsx";
 
 const MainScreen = (props) => {
   const {places, onAticleClick} = props;
-  const placesList = <PlacesList
-    places = {places}
-    onAticleClick = {onAticleClick}
-  />;
-  const placesMap = <CityMap
-    places = {places}
-  />;
   return <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -95,11 +88,16 @@ const MainScreen = (props) => {
               </select>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {placesList}
+              <PlacesList
+                places={places}
+                onAticleClick={onAticleClick}
+              />
             </div>
           </section>
           <div className="cities__right-section">
-            {placesMap}
+            <CityMap
+              places={places}
+            />
           </div>
         </div>
       </div>
@@ -107,9 +105,6 @@ const MainScreen = (props) => {
   </div>;
 };
 
-// <CityMap
-// place = {places[0]}
-// />
 MainScreen.propTypes = {
   places: PropTypes.arrayOf(
       PropTypes.shape({

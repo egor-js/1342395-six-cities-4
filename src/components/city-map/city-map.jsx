@@ -7,11 +7,13 @@ export default class CityMap extends PureComponent {
   constructor(props) {
     super(props);
   }
+
   render() {
     return (
       <section id="map" className="cities__map map" />
     );
   }
+
   componentDidMount() {
     const {places} = this.props;
     const zoom = 12;
