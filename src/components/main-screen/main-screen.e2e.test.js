@@ -2,41 +2,7 @@ import React from "react";
 import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import MainScreen from "./main-screen";
-
-const mocks = [
-  {
-    photoUrl: `img/apartment-01.jpg`,
-    isPremium: false,
-    price: 50,
-    title: `Beautiful & luxurious apartment at great location`,
-    type: `Apartment`,
-    raiting: 5,
-  },
-  {
-    photoUrl: `img/apartment-02.jpg`,
-    isPremium: true,
-    price: 85,
-    title: `Wood and stone place`,
-    type: `Room`,
-    raiting: 4,
-  },
-  {
-    photoUrl: `img/apartment-03.jpg`,
-    isPremium: false,
-    price: 42,
-    title: `Canal View Prinsengracht`,
-    type: `House`,
-    raiting: 3,
-  },
-  {
-    photoUrl: `img/apartment-01.jpg`,
-    isPremium: false,
-    price: 22,
-    title: `Nice, cozy, warm big bed apartment`,
-    type: `Hotel`,
-    raiting: 2,
-  },
-];
+import testData from "../../mocks/test-data.js";
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -45,11 +11,13 @@ Enzyme.configure({
 describe(`e2e main-screen`, () => {
   it(`Should article link be pressed`, () => {
     const onAticleClick = jest.fn();
-
+    const div = global.document.createElement(`div`);
+    div.setAttribute(`id`, `map`);
+    global.document.body.appendChild(div);
     const mainScreen = mount(
         <MainScreen
           onAticleClick = {onAticleClick}
-          places = {mocks}
+          places = {testData}
         />
     );
     const cards = mainScreen.find(`.place-card__name`);

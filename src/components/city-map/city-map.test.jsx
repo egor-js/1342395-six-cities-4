@@ -1,21 +1,19 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MainScreen from "./main-screen";
+import CityMap from "./city-map.jsx";
 import testData from "../../mocks/test-data.js";
 
-const onArticleButtonClick = function () {};
-
-describe(`main-screen`, () => {
-  it(`snapshot test main screen`, () => {
+describe(`city map`, () => {
+  it(`snapshot test city map`, () => {
     const div = global.document.createElement(`div`);
     div.setAttribute(`id`, `map`);
     global.document.body.appendChild(div);
     const tree = renderer
       .create(
-          <MainScreen
-            onAticleClick = {onArticleButtonClick}
+          <CityMap
             places = {testData}
-          />)
+          />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

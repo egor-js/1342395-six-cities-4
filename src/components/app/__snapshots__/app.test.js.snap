@@ -229,6 +229,13 @@ exports[`app app test 1`] = `
               onMouseOver={[Function]}
             >
               <div
+                className="place-card__mark"
+              >
+                <span>
+                  Premium
+                </span>
+              </div>
+              <div
                 className="cities__image-wrapper pl1ace-card__image-wrapper"
               >
                 <a
@@ -630,6 +637,7 @@ exports[`app app test 1`] = `
         >
           <section
             className="cities__map map"
+            id="map"
           />
         </div>
       </div>

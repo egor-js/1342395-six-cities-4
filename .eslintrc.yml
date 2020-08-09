@@ -12,8 +12,23 @@ parserOptions:
   ecmaVersion: 6
   sourceType: module
 
-plugins: ['react']
+plugins: ['react', 'sort-class-members']
 
 settings:
   react:
     version: '16'
+
+rules: {
+  sort-class-members/sort-class-members: [2, {
+    order: [
+      '[static-properties]',
+      '[static-methods]',
+      '[properties]',
+      '[conventional-private-properties]',
+      constructor,
+      '[methods]',
+      '[conventional-private-methods]'
+    ],
+    accessorPairPositioning: getThenSet,
+  }]
+}

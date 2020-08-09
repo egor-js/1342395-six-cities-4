@@ -59,14 +59,25 @@ App.propTypes = {
   places: PropTypes.arrayOf(
       PropTypes.shape({
         photoUrl: PropTypes.string.isRequired,
+        photos: PropTypes.arrayOf(PropTypes.string.isRequired),
         isPremium: PropTypes.bool.isRequired,
         price: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
         raiting: PropTypes.number.isRequired,
+        bedrooms: PropTypes.number.isRequired,
+        guests: PropTypes.number.isRequired,
+        features: PropTypes.arrayOf(PropTypes.string.isRequired),
+        host: PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          avatarurl: PropTypes.string.isRequired,
+          super: PropTypes.bool.isRequired,
+        }),
+        city: PropTypes.string.isRequired,
       }).isRequired
   ).isRequired,
-  onAticleClick: PropTypes.func.isRequired,
 };
 
 export default App;

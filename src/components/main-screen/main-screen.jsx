@@ -1,13 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import PlacesList from "../places-list/places-list.jsx";
+import CityMap from "../city-map/city-map.jsx";
 
 const MainScreen = (props) => {
   const {places, onAticleClick} = props;
-  const placesList = <PlacesList
-    places = {places}
-    onAticleClick = {onAticleClick}
-  />;
   return <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -91,11 +88,16 @@ const MainScreen = (props) => {
               </select>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {placesList}
+              <PlacesList
+                places={places}
+                onAticleClick={onAticleClick}
+              />
             </div>
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+            <CityMap
+              places={places}
+            />
           </div>
         </div>
       </div>
@@ -112,6 +114,8 @@ MainScreen.propTypes = {
         title: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
         raiting: PropTypes.number.isRequired,
+        city: PropTypes.string.isRequired,
+        coordinates: PropTypes.arrayOf(PropTypes.number.isRequired),
       }).isRequired
   ).isRequired,
   onAticleClick: PropTypes.func.isRequired,
