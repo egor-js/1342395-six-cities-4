@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 
-export const withActiveItem = (Component) => {
+export const withActiveElement = (Component) => {
   return class WithActiveElement extends PureComponent {
     constructor(props) {
       super(props);
@@ -18,7 +18,8 @@ export const withActiveItem = (Component) => {
         activeItemId = {this.state.activeElementId}
       />;
     }
-    _itemClickHandler(id) {
+    _elementClickHandler(id) {
+      console.log(id);
       this.setState({
         activeElementId: id,
       });

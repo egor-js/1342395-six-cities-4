@@ -5,6 +5,7 @@ import PlaceDetail from "../place-detail/place-detail.jsx";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import reviews from '../../mocks/reviews.js';
 
+
 class App extends PureComponent {
   constructor(props) {
     super(props);

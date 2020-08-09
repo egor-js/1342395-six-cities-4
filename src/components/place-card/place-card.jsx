@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 class PlaceCard extends PureComponent {
   constructor(props) {
     super(props);
-    const {place, onAticleClick, id, onCardHover} = props;
+    console.log(props);
+    const { place, onActiveItemCheck, id, onCardHover} = props;
     this.place = place;
-    this.onAticleClick = onAticleClick;
+    this.onAticleClick = onActiveItemCheck;
     this.onCardHover = onCardHover;
     this.id = id;
     const {photoUrl, isPremium, price, title, type, raiting} = this.place;
@@ -108,7 +109,7 @@ class PlaceCard extends PureComponent {
 PlaceCard.propTypes = {
   mode: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  onAticleClick: PropTypes.func.isRequired,
+  onActiveItemCheck: PropTypes.func.isRequired,
   onCardHover: PropTypes.func.isRequired,
   place: PropTypes.shape({
     photoUrl: PropTypes.string.isRequired,

@@ -1,6 +1,9 @@
 import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 import PlaceCard from "../place-card/place-card.jsx";
+// import {withActiveElement} from '../../hocs/with-active-element.jsx';
+
+// const OtherPlacesWrapped = withActiveElement(PlaceCard);
 
 class PlacesList extends PureComponent {
   constructor(props) {
@@ -11,6 +14,18 @@ class PlacesList extends PureComponent {
     };
   }
 
+  // render() {
+  //   const {places} = this.props;
+  //   return places.map((item, i) => {
+  //     return <PlaceCard
+  //       place = {item}
+  //       key = {i + item.title[0]}
+  //       id = {i + item.title[0]}
+  //       onCardHover = {this._hoverCardHandler}
+  //       mode = {this.props.mode}
+  //     />;
+  //   });
+  // }
   render() {
     const {places, onAticleClick} = this.props;
     return places.map((item, i) => {

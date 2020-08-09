@@ -4,6 +4,9 @@ import {PlaceFeatures} from '../../const.js';
 import ReviewsList from "../reviews-list/reviews-list.jsx";
 import CityMap from "../city-map/city-map.jsx";
 import PlacesList from "../places-list/places-list.jsx";
+import {withActiveElement} from '../../hocs/with-active-element.jsx';
+
+const OtherPlacesWrapped = withActiveElement(PlacesList);
 
 const PlaceDetail = (props) => {
   const {
@@ -11,25 +14,35 @@ const PlaceDetail = (props) => {
     type, raiting, bedrooms, guests,
     features, text, description, host} = props.place;
   const raitingpercents = (Math.round(raiting) * 20);
+
   const featuresLi = features.map((item, i) => {
     return (<li key={i + item[0]} className="property__inside-item">
       {PlaceFeatures[item]}
     </li>);
   });
+
   const photosdiv = photos.map((item, i) => {
     return (<div key={i + item[0]} className="property__image-wrapper">
       <img className="property__image" src={item} alt="Photo studio" />
     </div>);
   });
+
   const placesMap = <CityMap
     places = {props.otherPlaces}
     mode = {`detail`}
   />;
-  const otherPlaces = <PlacesList
+
+  // const otherPlaces = <PlacesList
+  //   places = {props.otherPlaces}
+  //   onAticleClick = {props.onAticleClick}
+  //   mode = {`detail`}
+  // />;
+
+  const otherPlaces = <OtherPlacesWrapped
     places = {props.otherPlaces}
-    onAticleClick = {props.onAticleClick}
     mode = {`detail`}
   />;
+
   return <div className="page">
     <header className="header">
       <div className="container">
