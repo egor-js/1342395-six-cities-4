@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import App from "./app";
-import testData from "../../mocks/test-data.js";
+import {testData} from "../../mocks/test-data.js";
 
 const onArticleButtonClick = function () {};
 

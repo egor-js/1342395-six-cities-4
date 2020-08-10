@@ -5,6 +5,7 @@ import CityMap from "../city-map/city-map.jsx";
 
 const MainScreen = (props) => {
   const {places, onAticleClick} = props;
+
   return <div className="page page--gray page--main">
     <header className="header">
       <div className="container">

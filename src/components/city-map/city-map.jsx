@@ -9,9 +9,18 @@ export default class CityMap extends PureComponent {
   }
 
   render() {
-    return (
-      <section id="map" className="cities__map map" />
-    );
+    switch (this.props.mode) {
+      case `main`:
+        return (
+          <section id="map" className="cities__map map" />
+        );
+      case `detail`:
+        return (
+          <section id="map" className="property__map map" />
+        );
+      default:
+        return null;
+    }
   }
 
   componentDidMount() {
@@ -45,6 +54,7 @@ export default class CityMap extends PureComponent {
 }
 
 CityMap.propTypes = {
+  mode: PropTypes.string.isRequired,
   places: PropTypes.arrayOf(
       PropTypes.shape({
         photoUrl: PropTypes.string.isRequired,

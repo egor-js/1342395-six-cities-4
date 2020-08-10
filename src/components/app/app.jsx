@@ -3,14 +3,18 @@ import PropTypes from 'prop-types';
 import MainScreen from "../main-screen/main-screen.jsx";
 import PlaceDetail from "../place-detail/place-detail.jsx";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
+import reviews from '../../mocks/reviews.js';
+
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
+
     this._handleTitleClick = this._handleTitleClick.bind(this);
     this.props = props;
+
     this.state = {
-      detailId: `XX`,
+      detailedCardId: `XX`,
     };
   }
 
@@ -26,6 +30,9 @@ class App extends PureComponent {
           <Route exact path="/dev-component">
             <PlaceDetail
               place = {places[0]}
+              reviews = {reviews}
+              otherPlaces = {places}
+              onAticleClick= {this._clickTitleHandler}
             />;
           </Route>
         </Switch>
@@ -34,13 +41,23 @@ class App extends PureComponent {
   }
 
   _renderMainScreen() {
-    const {detailId} = this.state;
+    const {detailedCardId} = this.state;
     const {places} = this.props;
 
-    if (detailId !== `XX`) {
+    if (detailedCardId !== `XX`) {
+      const reviewsByPlace = reviews.filter((item) => {
+        return item.placeid === detailedCardId;
+      });
+      const otherPlaces = places.filter((item) => {
+        return item.id !== detailedCardId;
+      });
+
       return (
         <PlaceDetail
-          place = {places[detailId[0]]}
+          place = {places[detailedCardId[0]]}
+          otherPlaces = {otherPlaces}
+          reviews = {reviewsByPlace}
+          onAticleClick= {this._clickTitleHandler}
         />
       );
     }
@@ -55,6 +72,7 @@ class App extends PureComponent {
 
   _handleTitleClick(id) {
     this.setState({detailId: id});
+
   }
 }
 
