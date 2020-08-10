@@ -7,7 +7,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 class App extends PureComponent {
   constructor(props) {
     super(props);
-    this._clickTitleHandler = this._clickTitleHandler.bind(this);
+    this._handleTitleClick = this._handleTitleClick.bind(this);
     this.props = props;
     this.state = {
       detailId: `XX`,
@@ -16,6 +16,7 @@ class App extends PureComponent {
 
   render() {
     const {places} = this.props;
+
     return (
       <BrowserRouter>
         <Switch>
@@ -35,6 +36,7 @@ class App extends PureComponent {
   _renderMainScreen() {
     const {detailId} = this.state;
     const {places} = this.props;
+
     if (detailId !== `XX`) {
       return (
         <PlaceDetail
@@ -42,15 +44,16 @@ class App extends PureComponent {
         />
       );
     }
+
     return (
       <MainScreen
-        onAticleClick= {this._clickTitleHandler}
+        onAticleClick={this._handleTitleClick}
         places = {places}
       />
     );
   }
 
-  _clickTitleHandler(id) {
+  _handleTitleClick(id) {
     this.setState({detailId: id});
   }
 }
