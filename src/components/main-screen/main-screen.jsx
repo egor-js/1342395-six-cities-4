@@ -7,6 +7,7 @@ import CitiesList from "../cities-list/cities-list.jsx";
 import {getPlacesInCity, getCitiesNames} from '../../utils.js';
 
 const MainScreen = (props) => {
+  console.log(props);
   const {onAticleClick, placesInCity, city, citiesNames} = props;
   const placeCount = placesInCity.length;
   return <div className="page page--gray page--main">
@@ -72,10 +73,13 @@ const MainScreen = (props) => {
             </div>
           </section>
           <div className="cities__right-section">
-            {placesInCity ? <CityMap
-              places={placesInCity}
-              mode={`main`}
-            /> : ``}
+            <section className="cities__map map">
+              <CityMap
+                places={placesInCity}
+                mode={`main`}
+                city={`Amsterdam`}
+              />
+            </section>
           </div>
         </div>
       </div>
@@ -84,7 +88,7 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  city: PropTypes.string.isRequired,
+  city: PropTypes.string,
   citiesNames: PropTypes.arrayOf(PropTypes.string.isRequired),
   placesInCity: PropTypes.arrayOf(
       PropTypes.shape({

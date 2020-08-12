@@ -1,10 +1,4 @@
-export const getPlacesInCity = (state) => {
-  const {city, places} = state;
-  const placesInCity = places.filter((place) => {
-    return place.city === city;
-  });
-  return placesInCity || null;
-};
+import {createSelector} from "reselect";
 
 export const getCitiesNames = (places) => {
   const citiesNames = places.map((place) => {
@@ -14,12 +8,23 @@ export const getCitiesNames = (places) => {
   return [...new Set(citiesNames)];
 };
 
+export const getPlaces = (state) => {
+  return state.places;
+};
 
-// console.log(props);
-// const places1 = props.places1;
-// console.log(places1);
+export const getCity = (state) => {
+  return state.city;
+};
 
-// const placesInCity = places1.filter((place) => {
-//   return place.city === city;
-// });
-// console.log(placesInCity);
+export const getActiveOffer = (state) => {
+  return state.activeCard;
+};
+
+export const getPlacesInCity = createSelector(
+    getPlaces,
+    getCity,
+
+    (places, city) => places.filter((item) => {
+      return item.city === city;
+    })
+);

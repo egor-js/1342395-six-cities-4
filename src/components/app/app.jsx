@@ -15,18 +15,16 @@ class App extends PureComponent {
     this._handleTitleClick = this._handleTitleClick.bind(this);
 
     this.state = {
-      detailedCardId: `XX`,
+      detailedCard: null,
     };
   }
 
   render() {
-    const {placesInCity} = this.props;
-    console.log(placesInCity);
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            {this._renderMainScreen()}
+            {this._render()}
           </Route>
           <Route exact path="/dev-component">
             {}
@@ -39,27 +37,25 @@ class App extends PureComponent {
   componentDidMount() {
     this.props.onLoad(mockPlaces[0].city, mockPlaces);
   }
-  
-  _renderMainScreen() {
-    const {detailedCardId} = this.state;
-    const {placesInCity} = this.props;
 
-    if (detailedCardId !== `XX`) {
+  _render() {
+    const {detailedCard} = this.state;
+    const {places} = this.props;
+    if (detailedCard !== null) {
+      console.log(detailedCard);
       const reviewsByPlace = reviews.filter((item) => {
-        return item.placeid === detailedCardId;
+        return item.placeid === detailedCard;
       });
-      const otherPlaces = placesInCity.filter((item) => {
-        return item.id !== detailedCardId;
+      const otherPlaces = places.filter((item) => {
+        return item.id !== detailedCard;
       });
 
-      return (
-        <PlaceDetail
-          place={placesInCity[detailedCardId[0]]}
-          otherPlaces = {otherPlaces}
-          reviews = {reviewsByPlace}
-          onAticleClick={this._handleTitleClick}
-        />
-      );
+      return <PlaceDetail
+        place={detailedCard}
+        otherPlaces = {otherPlaces}
+        reviews = {reviewsByPlace}
+        onAticleClick={this._handleTitleClick}
+      />;
     }
 
     return (
@@ -69,14 +65,15 @@ class App extends PureComponent {
     );
   }
 
-  _handleTitleClick(id) {
-    this.setState({detailedCardId: id});
+  _handleTitleClick(place) {
+    console.log(place);
+    this.setState({detailedCard: place});
   }
 }
 
 
 App.propTypes = {
-  placesInCity: PropTypes.arrayOf(
+  places: PropTypes.arrayOf(
       PropTypes.shape({
         photoUrl: PropTypes.string.isRequired,
         photos: PropTypes.arrayOf(PropTypes.string.isRequired),
@@ -102,11 +99,12 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  placesInCity: state.placesInCity,
+  places: state.places,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onLoad(city, places) {
+    console.log(places);
     dispatch(ActionCreator.changeCity(city));
     dispatch(ActionCreator.setAllPlaces(places));
   }

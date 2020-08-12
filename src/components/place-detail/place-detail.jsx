@@ -6,6 +6,7 @@ import CityMap from "../city-map/city-map.jsx";
 import PlacesList from "../places-list/places-list.jsx";
 
 const PlaceDetail = (props) => {
+  console.log(props);
   const {
     photos, isPremium, price, title,
     type, raiting, bedrooms, guests,

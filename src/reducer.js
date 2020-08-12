@@ -1,6 +1,7 @@
+import Immutable from 'seamless-immutable';
 
 const initialState = {
-  city: null,
+  city: ``,
   places: [],
 };
 
@@ -22,11 +23,7 @@ const ActionCreator = {
 };
 
 const reducer = (state = initialState, action) => {
-  // console.log(`state.places from reducer is: ` + state.places);
-  // console.log(`state.city from reducer is: ` + state.city);
-  // console.log(`action.type from reducer is: ` + action.type);
-  // console.log(`action.payload from reducer is: ` + action.payload);
-
+  console.log(state);
   switch (action.type) {
     case ActionType.CHANGE_CITY:
       return Object.assign({}, state, {
@@ -38,7 +35,7 @@ const reducer = (state = initialState, action) => {
         places: action.payload,
       });
   }
-
+  console.log(state);
   return state;
 };
 

@@ -341,7 +341,7 @@ export default [
     coordinates: [52.3809553943508, 4.939309666406198],
   },
   {
-    id: `11N`,
+    id: `12N`,
     photoUrl: `img/apartment-01.jpg`,
     photos: [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`],
     isPremium: false,

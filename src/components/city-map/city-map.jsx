@@ -25,40 +25,17 @@ export default class CityMap extends PureComponent {
   }
 
   componentDidMount() {
-    const mapRef = this._mapRef.current;
-    const city = `Amsterdam`; // this.props.places[0].city;
+    console.log(this.props.places);
+    // if (this.props.places !== null) {
+    //   const mapRef = this._mapRef.current;
+    //   const city = this.props.city;
 
-    this._createMap(mapRef, city);
-    this._setMapView(city);
-    this._addTileLayer(this._map);
-    this._addMarkers(this._map);
+    //   this._addTileLayer(this._map);
+    //   this._addMarkers(this._map);
+    //   this._createMap(mapRef, city);
+    //   this._setMapView(city);
+    // }
 
-    //   const {places} = this.props;
-    //   const zoom = 12;
-    //   const mapCentre = Cities[places[0].city]; // [52.38333, 4.9];
-    //   const icon = leaflet.icon({
-    //     iconUrl: `img/pin.svg`,
-    //     iconSize: [30, 30]
-    //   });
-    //   const map = leaflet.map(`map`, {
-    //     center: mapCentre,
-    //     zoom,
-    //     zoomControl: false,
-    //     marker: true
-    //   });
-    //   map.setView(mapCentre, zoom);
-
-    //   leaflet
-    //   .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-    //     attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-    //   })
-    //   .addTo(map);
-
-  //   places.forEach((item) => {
-  //     leaflet
-  //     .marker(item.coordinates, {icon})
-  //     .addTo(map);
-  //   });
   }
   _addMarkers(map) {
     const {places} = this.props;
@@ -100,8 +77,8 @@ export default class CityMap extends PureComponent {
   }
 }
 
+// mode: PropTypes.string.isRequired,
 CityMap.propTypes = {
-  mode: PropTypes.string.isRequired,
   places: PropTypes.arrayOf(
       PropTypes.shape({
         photoUrl: PropTypes.string.isRequired,

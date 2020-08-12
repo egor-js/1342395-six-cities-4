@@ -25,7 +25,7 @@ class PlaceCard extends PureComponent {
     switch (this.props.mode) {
       case `main`:
         return <article onMouseOver={() => {
-          this.onCardHover(this.id);
+          this.onCardHover(this.place);
         }} className="cities__place-card place-card">
           {this.isPremium &&
           <div className="place-card__mark">
@@ -56,8 +56,8 @@ class PlaceCard extends PureComponent {
               </div>
             </div>
             <h2 className="place-card__name">
-              <a href="#" id={this.id} onClick={() => {
-                this.onAticleClick(this.id);
+              <a href="#" id={this.place.id} onClick={() => {
+                this.onAticleClick(this.place);
               }}>
                 {this.title}</a>
             </h2>
@@ -91,8 +91,8 @@ class PlaceCard extends PureComponent {
               </div>
             </div>
             <h2 className="place-card__name">
-              <a href="#" id={this.id} onClick={() => {
-                this.onAticleClick(this.id);
+              <a href="#" id={this.place.id} onClick={() => {
+                this.onAticleClick(this.place);
               }}>
                 {this.title}</a>
             </h2>
