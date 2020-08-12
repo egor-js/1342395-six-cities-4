@@ -2,10 +2,13 @@ import React from "react";
 import PropTypes from 'prop-types';
 import PlacesList from "../places-list/places-list.jsx";
 import CityMap from "../city-map/city-map.jsx";
+import {connect} from "react-redux";
+import CitiesList from "../cities-list/cities-list.jsx";
+import {getPlacesInCity, getCitiesNames} from '../../utils.js';
 
 const MainScreen = (props) => {
-  const {places, onAticleClick} = props;
-
+  const {onAticleClick, placesInCity, city, citiesNames} = props;
+  const placeCount = placesInCity.length;
   return <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -34,45 +37,17 @@ const MainScreen = (props) => {
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <ul className="locations__list tabs__list">
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Paris</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Cologne</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Brussels</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active">
-                <span>Amsterdam</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Hamburg</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Dusseldorf</span>
-              </a>
-            </li>
-          </ul>
+          <CitiesList
+            city={city}
+            citiesNames={citiesNames}
+          />
         </section>
       </div>
       <div className="cities">
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">places to stay in Amsterdam</b>
+            <b className="places__found">{placeCount} places to stay in Amsterdam</b>
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
               <span className="places__sorting-type" tabIndex="0">
@@ -90,15 +65,17 @@ const MainScreen = (props) => {
             </form>
             <div className="cities__places-list places__list tabs__content">
               <PlacesList
-                places={places}
+                places={placesInCity}
                 onAticleClick={onAticleClick}
+                mode = {`main`}
               />
             </div>
           </section>
           <div className="cities__right-section">
-            <CityMap
-              places={places}
-            />
+            {placesInCity ? <CityMap
+              places={placesInCity}
+              mode={`main`}
+            /> : ``}
           </div>
         </div>
       </div>
@@ -107,7 +84,9 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  places: PropTypes.arrayOf(
+  city: PropTypes.string.isRequired,
+  citiesNames: PropTypes.arrayOf(PropTypes.string.isRequired),
+  placesInCity: PropTypes.arrayOf(
       PropTypes.shape({
         photoUrl: PropTypes.string.isRequired,
         isPremium: PropTypes.bool.isRequired,
@@ -122,4 +101,12 @@ MainScreen.propTypes = {
   onAticleClick: PropTypes.func.isRequired,
 };
 
-export default MainScreen;
+const mapStateToProps = (state) => ({
+  city: state.city,
+  placesInCity: getPlacesInCity(state),
+  citiesNames: getCitiesNames(state.places),
+});
+
+export {MainScreen};
+export default connect(mapStateToProps, null)(MainScreen);
+

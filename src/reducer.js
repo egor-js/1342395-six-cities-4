@@ -1,12 +1,12 @@
 
 const initialState = {
   city: null,
-  offers: [],
+  places: [],
 };
 
 const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
-  SET_ALL_OFFERS: `SET_ALL_OFFERS`,
+  SET_ALL_PLACES: `SET_ALL_PLACES`,
 };
 
 const ActionCreator = {
@@ -15,22 +15,27 @@ const ActionCreator = {
     payload: city,
   }),
 
-  setAllOffers: (offers) => ({
-    type: ActionType.SET_ALL_OFFERS,
-    payload: offers,
+  setAllPlaces: (places) => ({
+    type: ActionType.SET_ALL_PLACES,
+    payload: places,
   }),
 };
 
 const reducer = (state = initialState, action) => {
+  // console.log(`state.places from reducer is: ` + state.places);
+  // console.log(`state.city from reducer is: ` + state.city);
+  // console.log(`action.type from reducer is: ` + action.type);
+  // console.log(`action.payload from reducer is: ` + action.payload);
+
   switch (action.type) {
     case ActionType.CHANGE_CITY:
       return Object.assign({}, state, {
         city: action.payload,
       });
 
-    case ActionType.SET_ALL_OFFERS:
+    case ActionType.SET_ALL_PLACES:
       return Object.assign({}, state, {
-        offers: action.payload,
+        places: action.payload,
       });
   }
 

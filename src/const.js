@@ -12,5 +12,7 @@ export const PlaceFeatures = {
 };
 
 export const Cities = {
-  Amsterdam: [52.38333, 4.9]
+  Amsterdam: [52.38333, 4.9],
+  Paris: [48.854934, 2.350947],
+  Brussels: [50.843478, 4.364190],
 };

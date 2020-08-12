@@ -4,14 +4,15 @@ import MainScreen from "../main-screen/main-screen.jsx";
 import PlaceDetail from "../place-detail/place-detail.jsx";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import reviews from '../../mocks/reviews.js';
-
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer.js";
+import mockPlaces from "../../mocks/offers";
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
-
+    console.log(props);
     this._handleTitleClick = this._handleTitleClick.bind(this);
-    this.props = props;
 
     this.state = {
       detailedCardId: `XX`,
@@ -19,8 +20,8 @@ class App extends PureComponent {
   }
 
   render() {
-    const {places} = this.props;
-
+    const {placesInCity} = this.props;
+    console.log(placesInCity);
     return (
       <BrowserRouter>
         <Switch>
@@ -28,36 +29,35 @@ class App extends PureComponent {
             {this._renderMainScreen()}
           </Route>
           <Route exact path="/dev-component">
-            <PlaceDetail
-              place = {places[0]}
-              reviews = {reviews}
-              otherPlaces = {places}
-              onAticleClick= {this._clickTitleHandler}
-            />;
+            {}
           </Route>
         </Switch>
       </BrowserRouter>
     );
   }
 
+  componentDidMount() {
+    this.props.onLoad(mockPlaces[0].city, mockPlaces);
+  }
+  
   _renderMainScreen() {
     const {detailedCardId} = this.state;
-    const {places} = this.props;
+    const {placesInCity} = this.props;
 
     if (detailedCardId !== `XX`) {
       const reviewsByPlace = reviews.filter((item) => {
         return item.placeid === detailedCardId;
       });
-      const otherPlaces = places.filter((item) => {
+      const otherPlaces = placesInCity.filter((item) => {
         return item.id !== detailedCardId;
       });
 
       return (
         <PlaceDetail
-          place = {places[detailedCardId[0]]}
+          place={placesInCity[detailedCardId[0]]}
           otherPlaces = {otherPlaces}
           reviews = {reviewsByPlace}
-          onAticleClick= {this._clickTitleHandler}
+          onAticleClick={this._handleTitleClick}
         />
       );
     }
@@ -65,19 +65,18 @@ class App extends PureComponent {
     return (
       <MainScreen
         onAticleClick={this._handleTitleClick}
-        places = {places}
       />
     );
   }
 
   _handleTitleClick(id) {
-    this.setState({detailId: id});
-
+    this.setState({detailedCardId: id});
   }
 }
 
+
 App.propTypes = {
-  places: PropTypes.arrayOf(
+  placesInCity: PropTypes.arrayOf(
       PropTypes.shape({
         photoUrl: PropTypes.string.isRequired,
         photos: PropTypes.arrayOf(PropTypes.string.isRequired),
@@ -99,6 +98,19 @@ App.propTypes = {
         city: PropTypes.string.isRequired,
       }).isRequired
   ).isRequired,
+  onLoad: PropTypes.func.isRequired,
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  placesInCity: state.placesInCity,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onLoad(city, places) {
+    dispatch(ActionCreator.changeCity(city));
+    dispatch(ActionCreator.setAllPlaces(places));
+  }
+});
+
+export {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
