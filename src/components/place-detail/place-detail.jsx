@@ -190,7 +190,10 @@ const PlaceDetail = (props) => {
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
           <div className="near-places__list places__list">
 
-            {otherPlaces}
+            <CityMap
+              places={props.otherPlaces}
+              mode={`detail`}
+            />
 
           </div>
         </section>

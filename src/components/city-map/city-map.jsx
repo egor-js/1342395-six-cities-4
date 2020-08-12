@@ -2,6 +2,7 @@ import React, {PureComponent, createRef} from "react";
 import PropTypes from 'prop-types';
 import leaflet from "leaflet";
 import {Cities} from '../../const.js';
+import mockPlaces from "../../mocks/offers";
 
 const ZOOM = 12;
 const icon = leaflet.icon({
@@ -16,7 +17,8 @@ export default class CityMap extends PureComponent {
     this._map = null;
     this._markers = null;
     this._mapRef = createRef();
-  }
+    this._mocksPlaces = mockPlaces;
+  } 
 
   render() {
     return (
@@ -25,23 +27,23 @@ export default class CityMap extends PureComponent {
   }
 
   componentDidMount() {
-    console.log(this.props.places);
+    // console.log(this.props.places);
     // if (this.props.places !== null) {
-    //   const mapRef = this._mapRef.current;
-    //   const city = this.props.city;
+      const mapRef = this._mapRef.current;
+    const city = this._mocksPlaces[0].city;
 
-    //   this._addTileLayer(this._map);
-    //   this._addMarkers(this._map);
-    //   this._createMap(mapRef, city);
-    //   this._setMapView(city);
+      this._createMap(mapRef, city);
+      this._addTileLayer(this._map);
+      this._addMarkers(this._map);
+      this._setMapView(city);
     // }
 
   }
   _addMarkers(map) {
-    const {places} = this.props;
+    const {places} = this._mocksPlaces;
     this._markers = leaflet.layerGroup();
 
-    places.forEach((item) => {
+    this._mocksPlaces.forEach((item) => {
       leaflet
         .marker(item.coordinates, {icon})
         .addTo(this._markers);

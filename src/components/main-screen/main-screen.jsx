@@ -5,6 +5,7 @@ import CityMap from "../city-map/city-map.jsx";
 import {connect} from "react-redux";
 import CitiesList from "../cities-list/cities-list.jsx";
 import {getPlacesInCity, getCitiesNames} from '../../utils.js';
+import mockPlaces from "../../mocks/offers";
 
 const MainScreen = (props) => {
   console.log(props);
