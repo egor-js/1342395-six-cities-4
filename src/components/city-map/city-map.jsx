@@ -18,7 +18,7 @@ export default class CityMap extends PureComponent {
     this._markers = null;
     this._mapRef = createRef();
     this._mocksPlaces = mockPlaces;
-  } 
+  }
 
   render() {
     return (
@@ -29,13 +29,13 @@ export default class CityMap extends PureComponent {
   componentDidMount() {
     // console.log(this.props.places);
     // if (this.props.places !== null) {
-      const mapRef = this._mapRef.current;
+    const mapRef = this._mapRef.current;
     const city = this._mocksPlaces[0].city;
 
-      this._createMap(mapRef, city);
-      this._addTileLayer(this._map);
-      this._addMarkers(this._map);
-      this._setMapView(city);
+    this._createMap(mapRef, city);
+    this._addTileLayer(this._map);
+    this._addMarkers(this._map);
+    this._setMapView(city);
     // }
 
   }
